@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user
+  labels:
+    app: user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user 
+  template:
+    metadata:
+      labels:
+        app: user
+    spec:
+      containers:
+      - name: user
+        image: 355449129696.dkr.ecr.us-east-1.amazonaws.com/user:3.1.0
+        ports:
+        - containerPort: 8080
+        envFrom: 
+          - configMapRef: 
+              name: user-cm 
+
+--- 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-cm
+data:
+  REDIS_HOST: redis-dev.roboshop.internal
+  MONGO_URL: mongodb://admin1:roboshop1@roboshop-dev.cluster-ciqb6xvrbz0q.us-east-1.docdb.amazonaws.com:27017/users?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
+
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+spec:
+  selector:
+    app: user
+  ports:
+  - name: name-of-service-port
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
