@@ -25,16 +25,6 @@ spec:
 
 --- 
 apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: user-cm
-data:
-  REDIS_HOST: redis-dev.roboshop.internal
-  MONGO_URL: mongodb://admin1:roboshop1@roboshop-dev.cluster-c93whrwsdihk.us-east-1.docdb.amazonaws.com:27017/users?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
-
-
---- 
-apiVersion: v1
 kind: Service
 metadata:
   name: user-service
