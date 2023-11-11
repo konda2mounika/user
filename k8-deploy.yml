@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: user
-        image: 355449129696.dkr.ecr.us-east-1.amazonaws.com/user:VERSION
+        image: https://github.com/konda2mounika/cart.git
         ports:
         - containerPort: 8080
         envFrom: 
