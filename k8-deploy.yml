@@ -39,7 +39,7 @@ kind: Service
 metadata:
   name: user-service
 spec:
-  type: loadbalancer
+  type: ClusterIP
   selector:
     app: user
   ports:
