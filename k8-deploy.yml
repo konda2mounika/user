@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: user
-        image: https://github.com/konda2mounika/cart.git
+        image: konda2srikanth/test:user2.0
         ports:
         - containerPort: 8080
         envFrom: 
